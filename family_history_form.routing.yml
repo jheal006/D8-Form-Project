@@ -1,0 +1,7 @@
+family_history_form:
+  path: /family/history/form
+  defaults:
+    _form: Drupal\family_history_form\Form\FamilyHistoryForm
+    _title: 'Family History Form'
+  requirements:
+    _permission: 'access content'
