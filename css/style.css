@@ -45,6 +45,7 @@ textarea {
   height: 50px;
 }
 
+
 a:hover,
 a:focus,
 a:visited {
@@ -58,8 +59,7 @@ a:visited {
   width:100px;
 }
 
-.border {
-  width: 80%;
+#content .section {
   background: #e9eff7;
   margin: 1px;
   border-left: 1px solid #e9eff7;
@@ -81,8 +81,8 @@ a:visited {
     border-bottom: 2px solid #f3f8fa;
 }
 
-.container h2,
-fieldset {
+.container h2
+ {
   font-size: 16px;
   font-weight: bold;
   background: #d2dfed;
@@ -100,19 +100,52 @@ fieldset {
   vertical-align: middle;
 }
 
- .familyComp {
+ /* .familyComp */
+ #edit-familycomp {
   float: left;
   border: 1px solid #cccccc;
   margin: 10px 0 0 1px;
   width: 64%;
 }
 
-.maritalStatus {
+/* .maritalStatus */
+ #edit-maritalstatus {
   float: right;
   margin: 10px 15px 0 0;
   border: 1px solid #cccccc;
   width: 33%;
   line-height: 1.4;
+}
+
+#edit-textarea {
+  display: inline-block;
+}
+
+#edit-parents legend {
+  display: inline;
+  float: left
+}
+
+#edit-parents .fieldset-wrapper .js-form-item-parent1,
+#edit-parents .fieldset-wrapper .js-form-item-parent2
+ {
+  display: inline-block;
+  padding-left: 50px;
+  margin: 0;
+}
+
+/* #edit-parent1,
+#edit-parent2 {
+  display: inline;
+} */
+#edit-name .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
+#edit-name .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
+  display: inline;
+}
+
+#edit-name .fieldset-wrapper input {
+  float: left;
+  width: 40%;
 }
 
 .container .numbers {
