@@ -142,25 +142,21 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['familyComp']['siblings']['names_ages'] = [
       '#type' => 'fieldset',
       '#title' => t('Names & Ages'),
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['number']['brothers'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['number'] = [
       '#type' => 'textfield',
       '#title' => t('# of brothers: '),
-    ];$form['familyHistory']['familyComp']['siblings']['names_ages']['number']['sisters'] = [
-      '#type' => 'textfield',
-      '#title' => t('# of sisters: '),
-      '#attributes' => [
-        'class' => 'numbers',
-      ],
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['number'] = [
+      '#type' => 'textfield',
+      '#title' => t('# of sisters: '),
+    ];
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
@@ -184,22 +180,20 @@ class FamilyHistory extends FormBase {
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['number']['sons'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sons: '),
-    ];$form['familyHistory']['familyComp']['children']['names_ages']['number']['daughters'] = [
-      '#type' => 'textfield',
-      '#title' => t('# of daughters: '),
-      '#attributes' => [
-        'class' => 'numbers',
-      ],
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['sons'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['daughters'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['number'] = [
+      '#type' => 'textfield',
+      '#title' => t('# of daughters: '),
+    ];
+    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,

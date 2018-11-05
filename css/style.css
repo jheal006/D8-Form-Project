@@ -1,33 +1,3 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-}
-
-h3 {
-  display: inline-block;
-  padding-left: 2px;
-  font-size:14px;
-}
-
-label {
-  font-weight: normal;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 form {
   background: white;
   border: 1px solid #ccc;
@@ -121,32 +91,91 @@ a:visited {
   display: inline-block;
 }
 
-#edit-parents legend {
+#edit-parents legend,
+#edit-siblings legend,
+#edit-children legend {
   display: inline;
-  float: left
+  float: left;
+  width: 75px;
 }
 
 #edit-parents .fieldset-wrapper .js-form-item-parent1,
-#edit-parents .fieldset-wrapper .js-form-item-parent2
- {
+#edit-parents .fieldset-wrapper .js-form-item-parent2 {
   display: inline-block;
-  padding-left: 50px;
+  padding-left: 16%;
   margin: 0;
 }
 
-/* #edit-parent1,
-#edit-parent2 {
-  display: inline;
-} */
-#edit-name .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
-#edit-name .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
+.js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
+.js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
   display: inline;
 }
 
-#edit-name .fieldset-wrapper input {
+#edit-name .fieldset-wrapper input,
+#edit-occupation .fieldset-wrapper input,
+#edit-education .fieldset-wrapper input,
+#edit-health .fieldset-wrapper input {
   float: left;
-  width: 40%;
+  width: 35%;
+  margin: 0 10px;
 }
+
+#edit-names-ages legend,
+#edit-names-ages--2 legend {
+  position: absolute;
+  display: inline-block;
+  width: 150px;
+  left: 300px;
+  margin-top: -33px;
+}
+
+#edit-names-ages .fieldset-wrapper label,
+#edit-names-ages--2 .fieldset-wrapper label {
+  display: inline;
+}
+
+#edit-names-ages div div:nth-child(1),
+#edit-names-ages div div:nth-child(3),
+#edit-names-ages--2 div div:nth-child(1),
+#edit-names-ages--2 div div:nth-child(3) {
+  display: inline-block;
+  width: 140px;
+}
+
+#edit-names-ages div div:nth-child(2),
+#edit-names-ages div div:nth-child(4),
+#edit-names-ages--2 div div:nth-child(2),
+#edit-names-ages--2 div div:nth-child(4) {
+  display: inline;
+}
+
+#edit-names-ages div div:nth-child(2) input,
+#edit-names-ages div div:nth-child(4) input,
+#edit-names-ages--2 div div:nth-child(2) input,
+#edit-names-ages--2 div div:nth-child(4) input {
+  width: 65%;
+  margin-left: 25px;
+}
+
+#edit-names-ages #edit-number,
+#edit-names-ages #edit-number--2,
+#edit-children #edit-number--3,
+#edit-children #edit-number--4 {
+  width: 20px;
+}
+
+#edit-siblings .form-type-checkbox,
+#edit-children .form-type-checkbox {
+  display: inline;
+}
+
+
+
+
+/* #edit-occupation .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
+#edit-occupation .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
+  display: inline;
+} */
 
 .container .numbers {
   width: 20px;
