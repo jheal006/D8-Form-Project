@@ -78,15 +78,6 @@ a:visited {
   width: 64%;
 }
 
-/* .maritalStatus */
- #edit-maritalstatus {
-  float: right;
-  margin: 10px 15px 0 0;
-  border: 1px solid #cccccc;
-  width: 33%;
-  line-height: 1.4;
-}
-
 #edit-textarea {
   display: inline-block;
 }
@@ -106,11 +97,6 @@ a:visited {
   margin: 0;
 }
 
-.js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
-.js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
-  display: inline;
-}
-
 #edit-name .fieldset-wrapper input,
 #edit-occupation .fieldset-wrapper input,
 #edit-education .fieldset-wrapper input,
@@ -120,8 +106,8 @@ a:visited {
   margin: 0 10px;
 }
 
-#edit-names-ages legend,
-#edit-names-ages--2 legend {
+.siblings legend .fieldset-legend,
+.children legend .fieldset-legend {
   position: absolute;
   display: inline-block;
   width: 150px;
@@ -129,30 +115,24 @@ a:visited {
   margin-top: -33px;
 }
 
-#edit-names-ages .fieldset-wrapper label,
-#edit-names-ages--2 .fieldset-wrapper label {
-  display: inline;
-}
-
-#edit-names-ages div div:nth-child(1),
-#edit-names-ages div div:nth-child(3),
-#edit-names-ages--2 div div:nth-child(1),
-#edit-names-ages--2 div div:nth-child(3) {
+.siblings .fieldset-wrapper .form-item-number,
+.children .fieldset-wrapper .form-item-number {
   display: inline-block;
   width: 140px;
 }
 
-#edit-names-ages div div:nth-child(2),
-#edit-names-ages div div:nth-child(4),
-#edit-names-ages--2 div div:nth-child(2),
-#edit-names-ages--2 div div:nth-child(4) {
+.siblings .fieldset-wrapper .form-item-number label,
+.children .fieldset-wrapper .form-item-number label {
   display: inline;
 }
 
-#edit-names-ages div div:nth-child(2) input,
-#edit-names-ages div div:nth-child(4) input,
-#edit-names-ages--2 div div:nth-child(2) input,
-#edit-names-ages--2 div div:nth-child(4) input {
+.siblings .form-item-list,
+.children .form-item-list {
+  display: inline;
+}
+
+.siblings .form-item-list input,
+.children .form-item-list input {
   width: 65%;
   margin-left: 25px;
 }
@@ -169,54 +149,20 @@ a:visited {
   display: inline;
 }
 
-
-
-
-/* #edit-occupation .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-1.form-item-parent-1.form-no-label,
-#edit-occupation .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-parent-2.form-item-parent-2.form-no-label {
+#edit-checkboxes--wrapper legend {
   display: inline;
-} */
-
-.container .numbers {
-  width: 20px;
-  border: 2px solid #cccccc;
-  margin: 0 2px;
+  float: left;
 }
 
-.sibChild {
-  width: 97%;
+#edit-checkboxes .form-type-checkbox {
+  display: inline;
 }
 
-.title {
-  background: #d2dfed;
-  text-align: left;
-}
-
-.familyComp table:nth-child(1) input {
-  width: 95%;
-}
-
-.familyComp table:nth-child(1) tbody tr.title th:nth-child(2),
-.familyComp table:nth-child(1) tbody tr.title th:nth-child(3) {
-  padding-left: 32px;
-}
-
-.familyComp table:nth-child(2) tbody tr.title th:nth-child(2),
-.familyComp table:nth-child(3) tbody tr.title th:nth-child(2) {
-  line-height: 1.5;
-  text-align: center;
-}
-
-.familyComp  table:nth-child(1) tbody tr:nth-child(1) th {
-  line-height: normal;
-  text-align: center;
-}
-
-.familyComp table:nth-child(1) tr:nth-child(3) > td:nth-child(1) {
-  width: 29%;
-}
-
-.familyComp table:nth-child(2) tbody tr:nth-child(2) td:nth-child(1),
-.familyComp table:nth-child(3) tbody tr:nth-child(2) td:nth-child(1) {
-  width: 30%;
+/* .maritalStatus */
+ #edit-maritalstatus {
+  float: right;
+  margin: 10px 15px 0 0;
+  border: 1px solid #cccccc;
+  width: 33%;
+  line-height: 1.4;
 }

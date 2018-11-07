@@ -23,13 +23,6 @@ class FamilyHistory extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $form['#attached']['library'][] = 'family_history/family_history';
-    // Family Composition
-    // $form['familyComp'] = array(
-    //   '#type' => 'container',
-    //   '#attributes' => array(
-    //     'class' => 'familyComp',
-    //   ),
-    // );.
     //
     // Family History
     // .
@@ -142,6 +135,9 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['familyComp']['siblings']['names_ages'] = [
       '#type' => 'fieldset',
       '#title' => t('Names & Ages'),
+      '#attributes' => [
+        'class' => 'siblings'
+      ],
     ];
     $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['number'] = [
       '#type' => 'textfield',
@@ -177,6 +173,9 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['familyComp']['children']['names_ages'] = [
       '#type' => 'fieldset',
       '#title' => t('Names & Ages'),
+      '#attributes' => [
+        'class' => 'children'
+      ],
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
@@ -255,20 +254,15 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['textarea']['text'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['textarea']['family_relations'] = [
+    $form['familyHistory']['family_relations']['textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
     ];
-    $form['familyHistory']['textarea']['stressors'] = [
-      '#type' => 'textarea',
-      '#title' => $this
-        ->t('Stresssors:'),
-    ];
-    $form['familyHistory']['checkboxes']['stressors'] = [
-      '#title' => $this
-        ->t('Stresssors:'),
+    $form['familyHistory']['stressors']['checkboxes'] = [
       '#type' => 'checkboxes',
+      '#title' => $this
+        ->t('Stressors:'),
       '#options' => [
         'None' => $this->t('None reported'),
         'abuse' => $this->t('Abuse'),
@@ -276,9 +270,14 @@ class FamilyHistory extends FormBase {
         'death' => $this->t('Death'),
         'move' => $this->t('Move'),
         'separation' => $this->t('Separation or divorce'),
+        'military' => $this->t('Military Deployment'),
+        'other' => $this->t('Other'),
       ],
     ];
-    $form['familyHistory']['textarea']['mental_substance'] = [
+    $form['familyHistory']['stressors']['textarea'] = [
+      '#type' => 'textarea',
+    ];
+    $form['familyHistory']['mental_substance']['textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Family history of Mental Health Issues/Substance Abuse/Other::'),
