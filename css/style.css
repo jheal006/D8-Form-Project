@@ -24,10 +24,10 @@ a:visited {
   outline: 0 auto -webkit-focus-ring-color;
 }
 
-#parent1,
-#parent2 {
+/* #edit-parent-1,
+#edit-parent-2 {
   width:100px;
-}
+} */
 
 #content .section {
   background: #e9eff7;
@@ -90,13 +90,14 @@ a:visited {
   width: 75px;
 }
 
-#edit-parents .fieldset-wrapper .js-form-item-parent1,
-#edit-parents .fieldset-wrapper .js-form-item-parent2 {
+#edit-parents #edit-parent-1,
+#edit-parents #edit-parent-2{
   display: inline-block;
   padding-left: 16%;
   margin: 0;
 }
 
+#edit-parent-1,
 #edit-name .fieldset-wrapper input,
 #edit-occupation .fieldset-wrapper input,
 #edit-education .fieldset-wrapper input,
@@ -115,32 +116,36 @@ a:visited {
   margin-top: -33px;
 }
 
-.siblings .fieldset-wrapper .form-item-number,
-.children .fieldset-wrapper .form-item-number {
+.siblings .fieldset-wrapper .js-form-item label,
+.children .fieldset-wrapper .js-form-item label {
+  display: inline;
+}
+
+.siblings .fieldset-wrapper .form-item-brothers-number,
+.siblings .fieldset-wrapper .form-item-sisters-number,
+.children .fieldset-wrapper .form-item-sons-number,
+.children .fieldset-wrapper .form-item-daughters-number {
   display: inline-block;
+}
+
+.siblings .fieldset-wrapper .js-form-item-brothers-list,
+.siblings .fieldset-wrapper .js-form-item-sisters-list,
+.children .fieldset-wrapper .js-form-item-sons-list,
+.children .fieldset-wrapper .js-form-item-daughters-list {
+  display: inline;
   width: 140px;
 }
 
-.siblings .fieldset-wrapper .form-item-number label,
-.children .fieldset-wrapper .form-item-number label {
-  display: inline;
-}
-
-.siblings .form-item-list,
-.children .form-item-list {
-  display: inline;
-}
-
-.siblings .form-item-list input,
-.children .form-item-list input {
+.siblings .js-form-item input,
+.children .js-form-item input {
   width: 65%;
   margin-left: 25px;
 }
 
-#edit-names-ages #edit-number,
-#edit-names-ages #edit-number--2,
-#edit-children #edit-number--3,
-#edit-children #edit-number--4 {
+#edit-names-ages #edit-brothers-number,
+#edit-names-ages #edit-sisters-number,
+#edit-children #edit-sons-number,
+#edit-children #edit-daughters-number {
   width: 20px;
 }
 

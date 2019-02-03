@@ -48,7 +48,7 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('Parents'),
     ];
-    $form['familyHistory']['familyComp']['parents']['parent1'] = [
+    $form['familyHistory']['familyComp']['parents']['parent_1'] = [
       '#type' => 'select',
       '#options' => [
         '1' => $this
@@ -57,14 +57,15 @@ class FamilyHistory extends FormBase {
           ->t('Mother'),
       ],
     ];
-    $form['familyHistory']['familyComp']['parents']['parent2'] = [
+    $form['familyHistory']['familyComp']['parents']['parent_2'] = [
       '#type' => 'select',
       '#options' => [
         '1' => $this
-          ->t('Mother'),
-        '2' => $this
           ->t('Father'),
+        '2' => $this
+          ->t('Mother'),
       ],
+      '#default_value' => '2',
     ];
 
     // Family Comp - Parent(s) Name.
@@ -73,10 +74,10 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('Name'),
     ];
-    $form['familyHistory']['familyComp']['parents']['name']['parent_1'] = [
+    $form['familyHistory']['familyComp']['parents']['name']['parent_1_name'] = [
       '#type' => 'textfield',
     ];
-    $form['familyHistory']['familyComp']['parents']['name']['parent_2'] = [
+    $form['familyHistory']['familyComp']['parents']['name']['parent_2_name'] = [
       '#type' => 'textfield',
     ];
 
@@ -86,10 +87,10 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('Occupation'),
     ];
-    $form['familyHistory']['familyComp']['parents']['occupation']['parent_1'] = [
+    $form['familyHistory']['familyComp']['parents']['occupation']['parent_1_occupation'] = [
       '#type' => 'textfield',
     ];
-    $form['familyHistory']['familyComp']['parents']['occupation']['parent_2'] = [
+    $form['familyHistory']['familyComp']['parents']['occupation']['parent_2_occupation'] = [
       '#type' => 'textfield',
     ];
 
@@ -99,10 +100,10 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('Education'),
     ];
-    $form['familyHistory']['familyComp']['parents']['education']['parent_1'] = [
+    $form['familyHistory']['familyComp']['parents']['education']['parent_1_education'] = [
       '#type' => 'textfield',
     ];
-    $form['familyHistory']['familyComp']['parents']['education']['parent_2'] = [
+    $form['familyHistory']['familyComp']['parents']['education']['parent_2_education'] = [
       '#type' => 'textfield',
     ];
 
@@ -112,10 +113,10 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('General Health'),
     ];
-    $form['familyHistory']['familyComp']['parents']['health']['parent_1'] = [
+    $form['familyHistory']['familyComp']['parents']['health']['parent_1_health'] = [
       '#type' => 'textfield',
     ];
-    $form['familyHistory']['familyComp']['parents']['health']['parent_2'] = [
+    $form['familyHistory']['familyComp']['parents']['health']['parent_2_health'] = [
       '#type' => 'textfield',
     ];
 
@@ -126,7 +127,7 @@ class FamilyHistory extends FormBase {
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['none'] = [
+    $form['familyHistory']['familyComp']['siblings']['siblings_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
     ];
@@ -139,20 +140,20 @@ class FamilyHistory extends FormBase {
         'class' => 'siblings'
       ],
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['number'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['brothers_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of brothers: '),
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['list'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['brothers_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['number'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['sisters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sisters: '),
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['list'] = [
+    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['sisters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
@@ -165,7 +166,7 @@ class FamilyHistory extends FormBase {
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['none'] = [
+    $form['familyHistory']['familyComp']['children']['children_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
     ];
@@ -179,20 +180,20 @@ class FamilyHistory extends FormBase {
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['number'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['sons_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sons: '),
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['list'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['sons_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['number'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['daughters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of daughters: '),
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['list'] = [
+    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['daughters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
@@ -200,7 +201,7 @@ class FamilyHistory extends FormBase {
 
     //
     // Parent's Marital Status
-    // .
+    // 
     $form['familyHistory']['maritalStatus'] = [
       '#type' => 'fieldset',
       '#title' => t("Parent's Marital Status"),
@@ -254,7 +255,7 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['textarea']['text'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['family_relations']['textarea'] = [
+    $form['familyHistory']['family_relations']['family_relationships'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
@@ -274,22 +275,42 @@ class FamilyHistory extends FormBase {
         'other' => $this->t('Other'),
       ],
     ];
-    $form['familyHistory']['stressors']['textarea'] = [
+    $form['familyHistory']['stressors']['stressors_textarea'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['mental_substance']['textarea'] = [
+    $form['familyHistory']['mental_substance']['mental_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Family history of Mental Health Issues/Substance Abuse/Other::'),
     ];
+
+
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['submit'] = array(
+      '#type' => 'submit',
+      '#value' => $this->t('Save'),
+      '#button_type' => 'primary',
+    );
+
     return $form;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
 
+   public function submitForm(array &$form, FormStateInterface $form_state) {
+   // drupal_set_message($this->t('@can_name ,Your application is being submitted!', array('@can_name' => $form_state->getValue('candidate_name'))));
+    foreach ($form_state->getValues() as $key => $value) {
+      drupal_set_message($key . ': ' . $value);
+    }
   }
+  // public function submitForm(array &$form, FormStateInterface $form_state) {
+  //  $values = $form_state->getValues();
+  //  $this->config('your_module.settings')
+  //    ->set('variable_name', $values)
+  //    ->save();
+  //  parent::submitForm($form, $form_state)
+  // }
 
 }
