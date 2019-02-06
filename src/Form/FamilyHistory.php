@@ -76,9 +76,11 @@ class FamilyHistory extends FormBase {
     ];
     $form['familyHistory']['familyComp']['parents']['name']['parent_1_name'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
     $form['familyHistory']['familyComp']['parents']['name']['parent_2_name'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) Occupation.
@@ -89,9 +91,11 @@ class FamilyHistory extends FormBase {
     ];
     $form['familyHistory']['familyComp']['parents']['occupation']['parent_1_occupation'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
     $form['familyHistory']['familyComp']['parents']['occupation']['parent_2_occupation'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) Education.
@@ -102,9 +106,11 @@ class FamilyHistory extends FormBase {
     ];
     $form['familyHistory']['familyComp']['parents']['education']['parent_1_education'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
     $form['familyHistory']['familyComp']['parents']['education']['parent_2_education'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) General Health.
@@ -115,9 +121,11 @@ class FamilyHistory extends FormBase {
     ];
     $form['familyHistory']['familyComp']['parents']['health']['parent_1_health'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
     $form['familyHistory']['familyComp']['parents']['health']['parent_2_health'] = [
       '#type' => 'textfield',
+      '#required' => TRUE,
     ];
 
     // Family Comp - Sibling(s)
@@ -201,7 +209,7 @@ class FamilyHistory extends FormBase {
 
     //
     // Parent's Marital Status
-    // 
+    //
     $form['familyHistory']['maritalStatus'] = [
       '#type' => 'fieldset',
       '#title' => t("Parent's Marital Status"),
@@ -296,14 +304,32 @@ class FamilyHistory extends FormBase {
   }
 
   /**
+ * {@inheritdoc}
+ */
+public function validateForm(array &$form, FormStateInterface $form_state) {
+  // element_validate_number(($form_state->getValue('brothers_number'));
+  if (!is_numeric($form_state->getValue('brothers_number'))) {
+      $form_state->setErrorByName('brothers_number', $this->t('Please enter a number'));
+  } else if (intval($form_state->getValue('brothers_number') < 0)) {
+      $form_state->setErrorByName('brothers_number', $this->t('Please provide a positive integer'));
+  }
+}
+
+
+  /**
    * {@inheritdoc}
    */
 
    public function submitForm(array &$form, FormStateInterface $form_state) {
-   // drupal_set_message($this->t('@can_name ,Your application is being submitted!', array('@can_name' => $form_state->getValue('candidate_name'))));
-    foreach ($form_state->getValues() as $key => $value) {
-      drupal_set_message($key . ': ' . $value);
-    }
+    $dk = db_insert('family_history')
+    ->fields(array(
+      'name' => $form_state->getValue('parent_1_name'),
+    ))
+    ->execute();
+    dsm($dk);
+    // foreach ($form_state->getValues() as $key => $value) {
+    //   drupal_set_message($key . ': ' . $value);
+    // }
   }
   // public function submitForm(array &$form, FormStateInterface $form_state) {
   //  $values = $form_state->getValues();
