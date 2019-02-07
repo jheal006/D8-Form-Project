@@ -9,7 +9,6 @@
  *
  */
 
-
 function family_history_schema() {
   $schema['family_history'] = [
    'description' => 'Basic test table for the database unit tests.',
@@ -19,42 +18,280 @@ function family_history_schema() {
        'unsigned' => TRUE,
        'not null' => TRUE,
      ],
-     'name' => [
-       'description' => "A person's name",
+     'parent_1' => [
        'type' => 'varchar_ascii',
-       'length' => 255,
+       'length' => 20,
        'not null' => TRUE,
        'default' => '',
-       'binary' => TRUE,
      ],
-     'age' => [
-       'description' => "The person's age",
-       'type' => 'int',
-       'unsigned' => TRUE,
+     'parent_2' => [
+       'type' => 'varchar_ascii',
+       'length' => 20,
        'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_1_name' => [
+       'type' => 'varchar_ascii',
+       'length' => 20,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_2_name' => [
+       'type' => 'varchar_ascii',
+       'length' => 20,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_1_occupation' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_2_occupation' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_1_education' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_2_education' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_1_health' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'parent_2_health' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     // Siblings
+     'siblings' => [
+       'description' => 'Yes / No Sibling Checkbox',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
        'default' => 0,
      ],
-     'job' => [
-       'description' => "The person's job",
-       'type' => 'varchar',
-       'length' => 255,
+     'number_of_brothers' => [
+       'type' => 'int',
        'not null' => TRUE,
-       'default' => 'Undefined',
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'brothers_list' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'number_of_sisters' => [
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'sisters_list' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     // Children
+     'children' => [
+       'description' => 'Yes / No Children Checkbox',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'number_of_sons' => [
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'sons_list' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'number_of_daughters' => [
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'daughters_list' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     // Marital Status
+     'single' => [
+       'description' => 'single',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'engaged' => [
+       'description' => 'engaged',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'married' => [
+       'description' => 'married',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'divorced' => [
+       'description' => 'divorced',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'seperated' => [
+       'description' => 'seperated',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'divorceprocess' => [
+       'description' => 'divorceprocess',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'livein' => [
+       'description' => 'livein',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'selfmarriages' => [
+       'description' => 'selfmarriages',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'partnermarriages' => [
+       'description' => 'partnermarriages',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     // Text Area Questions
+     'general_text' => [
+       'type' => 'varchar_ascii',
+       'length' => 100,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     //Family History Specifics
+     'family_relationships_text' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'family_stressors_none' => [
+       'description' => 'family_stressors_none',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_abuse' => [
+       'description' => 'family_stressors_abuse',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_illness' => [
+       'description' => 'family_stressors_illness',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_death' => [
+       'description' => 'family_stressors_death',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_move' => [
+       'description' => 'family_stressors_move',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_divorce' => [
+       'description' => 'family_stressors_divorce',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_military' => [
+       'description' => 'family_stressors_military',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'family_stressors_other' => [
+       'description' => 'family_stressors_other',
+       'type' => 'int',
+       'not null' => TRUE,
+       'size' => 'tiny',
+       'default' => 0,
+     ],
+     'stressors_textarea' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
+     ],
+     'mental_textarea' => [
+       'type' => 'varchar_ascii',
+       'length' => 30,
+       'not null' => TRUE,
+       'default' => '',
      ],
    ],
    'primary key' => [
-     'id',
-   ],
-   'unique keys' => [
-     'name' => [
-       'name',
-     ],
-   ],
-   'indexes' => [
-     'ages' => [
-       'age',
-     ],
-   ],
+   'id',
+  ],
  ];
   return $schema;
 }

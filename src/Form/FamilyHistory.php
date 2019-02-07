@@ -51,21 +51,21 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['familyComp']['parents']['parent_1'] = [
       '#type' => 'select',
       '#options' => [
-        '1' => $this
+        'Father' => $this
           ->t('Father'),
-        '2' => $this
+        'Mother' => $this
           ->t('Mother'),
       ],
     ];
     $form['familyHistory']['familyComp']['parents']['parent_2'] = [
       '#type' => 'select',
       '#options' => [
-        '1' => $this
+        'Father' => $this
           ->t('Father'),
-        '2' => $this
+        'Mother' => $this
           ->t('Mother'),
       ],
-      '#default_value' => '2',
+      '#default_value' => 'Mother',
     ];
 
     // Family Comp - Parent(s) Name.
@@ -263,7 +263,7 @@ class FamilyHistory extends FormBase {
     $form['familyHistory']['textarea']['text'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['family_relations']['family_relationships'] = [
+    $form['familyHistory']['family_relations']['family_relationships_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
@@ -304,16 +304,16 @@ class FamilyHistory extends FormBase {
   }
 
   /**
- * {@inheritdoc}
- */
-public function validateForm(array &$form, FormStateInterface $form_state) {
-  // element_validate_number(($form_state->getValue('brothers_number'));
-  if (!is_numeric($form_state->getValue('brothers_number'))) {
-      $form_state->setErrorByName('brothers_number', $this->t('Please enter a number'));
-  } else if (intval($form_state->getValue('brothers_number') < 0)) {
-      $form_state->setErrorByName('brothers_number', $this->t('Please provide a positive integer'));
+  * {@inheritdoc}
+  */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    // element_validate_number(($form_state->getValue('brothers_number'));
+    if (!is_numeric($form_state->getValue('brothers_number'))) {
+        $form_state->setErrorByName('brothers_number', $this->t('Please enter a number'));
+    } else if (intval($form_state->getValue('brothers_number') < 0)) {
+        $form_state->setErrorByName('brothers_number', $this->t('Please provide a positive integer'));
+    }
   }
-}
 
 
   /**
@@ -323,7 +323,23 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
    public function submitForm(array &$form, FormStateInterface $form_state) {
     $dk = db_insert('family_history')
     ->fields(array(
-      'name' => $form_state->getValue('parent_1_name'),
+      'parent_1' => $form_state->getValue('parent_1'),
+      'parent_2' => $form_state->getValue('parent_2'),
+      'parent_1_name' => $form_state->getValue('parent_1_name'),
+      'parent_2_name' => $form_state->getValue('parent_2_name'),
+      'parent_1_occupation' => $form_state->getValue('parent_1_occupation'),
+      'parent_2_occupation' => $form_state->getValue('parent_2_occupation'),
+      'parent_1_education' => $form_state->getValue('parent_1_education'),
+      'parent_2_education' => $form_state->getValue('parent_2_education'),
+      'parent_1_health' => $form_state->getValue('parent_1_health'),
+      'parent_2_health' => $form_state->getValue('parent_2_health'),
+      'siblings' => $form_state->getValue('siblings_none'),
+      'number_of_brothers' => $form_state->getValue('brothers_number'),
+      'brothers_list' => $form_state->getValue('brothers_list'),
+      'number_of_sisters' => $form_state->getValue('sisters_number'),
+      'sisters_list' => $form_state->getValue('sisters_list'),
+
+
     ))
     ->execute();
     dsm($dk);
