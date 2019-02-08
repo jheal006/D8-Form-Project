@@ -26,7 +26,7 @@ class FamilyHistory extends FormBase {
     //
     // Family History
     // .
-    $form['familyHistory'] = [
+    $form['family_history'] = [
       '#type' => 'fieldset',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
@@ -35,7 +35,7 @@ class FamilyHistory extends FormBase {
     //
     // Family Compisition
     // .
-    $form['familyHistory']['familyComp'] = [
+    $form['family_history']['family_comp'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Family Composition'),
       '#collapsible' => FALSE,
@@ -43,12 +43,12 @@ class FamilyHistory extends FormBase {
     ];
 
     // Family Comp Parents.
-    $form['familyHistory']['familyComp']['parents'] = [
+    $form['family_history']['family_comp']['parents'] = [
       '#type' => 'fieldset',
       '#title' => $this
         ->t('Parents'),
     ];
-    $form['familyHistory']['familyComp']['parents']['parent_1'] = [
+    $form['family_history']['family_comp']['parents']['parent_1'] = [
       '#type' => 'select',
       '#options' => [
         'Father' => $this
@@ -57,7 +57,7 @@ class FamilyHistory extends FormBase {
           ->t('Mother'),
       ],
     ];
-    $form['familyHistory']['familyComp']['parents']['parent_2'] = [
+    $form['family_history']['family_comp']['parents']['parent_2'] = [
       '#type' => 'select',
       '#options' => [
         'Father' => $this
@@ -69,117 +69,117 @@ class FamilyHistory extends FormBase {
     ];
 
     // Family Comp - Parent(s) Name.
-    $form['familyHistory']['familyComp']['parents']['name'] = [
+    $form['family_history']['family_comp']['parents']['name'] = [
       '#type' => 'fieldset',
       '#title' => $this
         ->t('Name'),
     ];
-    $form['familyHistory']['familyComp']['parents']['name']['parent_1_name'] = [
+    $form['family_history']['family_comp']['parents']['name']['parent_1_name'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
-    $form['familyHistory']['familyComp']['parents']['name']['parent_2_name'] = [
+    $form['family_history']['family_comp']['parents']['name']['parent_2_name'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) Occupation.
-    $form['familyHistory']['familyComp']['parents']['occupation'] = [
+    $form['family_history']['family_comp']['parents']['occupation'] = [
       '#type' => 'fieldset',
       '#title' => $this
         ->t('Occupation'),
     ];
-    $form['familyHistory']['familyComp']['parents']['occupation']['parent_1_occupation'] = [
+    $form['family_history']['family_comp']['parents']['occupation']['parent_1_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
-    $form['familyHistory']['familyComp']['parents']['occupation']['parent_2_occupation'] = [
+    $form['family_history']['family_comp']['parents']['occupation']['parent_2_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) Education.
-    $form['familyHistory']['familyComp']['parents']['education'] = [
+    $form['family_history']['family_comp']['parents']['education'] = [
       '#type' => 'fieldset',
       '#title' => $this
         ->t('Education'),
     ];
-    $form['familyHistory']['familyComp']['parents']['education']['parent_1_education'] = [
+    $form['family_history']['family_comp']['parents']['education']['parent_1_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
-    $form['familyHistory']['familyComp']['parents']['education']['parent_2_education'] = [
+    $form['family_history']['family_comp']['parents']['education']['parent_2_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
 
     // Family Comp - Parent(s) General Health.
-    $form['familyHistory']['familyComp']['parents']['health'] = [
+    $form['family_history']['family_comp']['parents']['health'] = [
       '#type' => 'fieldset',
       '#title' => $this
         ->t('General Health'),
     ];
-    $form['familyHistory']['familyComp']['parents']['health']['parent_1_health'] = [
+    $form['family_history']['family_comp']['parents']['health']['parent_1_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
-    $form['familyHistory']['familyComp']['parents']['health']['parent_2_health'] = [
+    $form['family_history']['family_comp']['parents']['health']['parent_2_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
     ];
 
     // Family Comp - Sibling(s)
-    $form['familyHistory']['familyComp']['siblings'] = [
+    $form['family_history']['family_comp']['siblings'] = [
       '#type' => 'fieldset',
       '#title' => t('Siblings'),
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['siblings_none'] = [
+    $form['family_history']['family_comp']['siblings']['siblings_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
     ];
 
     // Family Comp - Sibling(s) Names & Ages.
-    $form['familyHistory']['familyComp']['siblings']['names_ages'] = [
+    $form['family_history']['family_comp']['siblings']['names_ages'] = [
       '#type' => 'fieldset',
       '#title' => t('Names & Ages'),
       '#attributes' => [
         'class' => 'siblings'
       ],
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['brothers_number'] = [
+    $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of brothers: '),
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['brothers']['brothers_list'] = [
+    $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['sisters_number'] = [
+    $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sisters: '),
     ];
-    $form['familyHistory']['familyComp']['siblings']['names_ages']['sisters']['sisters_list'] = [
+    $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
 
     // Family Comp - Children.
-    $form['familyHistory']['familyComp']['children'] = [
+    $form['family_history']['family_comp']['children'] = [
       '#type' => 'fieldset',
       '#title' => t('Children'),
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['children_none'] = [
+    $form['family_history']['family_comp']['children']['children_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
     ];
     // Family Comp - Children Names & Ages.
-    $form['familyHistory']['familyComp']['children']['names_ages'] = [
+    $form['family_history']['family_comp']['children']['names_ages'] = [
       '#type' => 'fieldset',
       '#title' => t('Names & Ages'),
       '#attributes' => [
@@ -188,20 +188,20 @@ class FamilyHistory extends FormBase {
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['sons_number'] = [
+    $form['family_history']['family_comp']['children']['names_ages']['sons']['sons_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sons: '),
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['sons']['sons_list'] = [
+    $form['family_history']['family_comp']['children']['names_ages']['sons']['sons_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['daughters_number'] = [
+    $form['family_history']['family_comp']['children']['names_ages']['daughters']['daughters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of daughters: '),
     ];
-    $form['familyHistory']['familyComp']['children']['names_ages']['daughters']['daughters_list'] = [
+    $form['family_history']['family_comp']['children']['names_ages']['daughters']['daughters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
@@ -210,46 +210,46 @@ class FamilyHistory extends FormBase {
     //
     // Parent's Marital Status
     //
-    $form['familyHistory']['maritalStatus'] = [
+    $form['family_history']['maritalStatus'] = [
       '#type' => 'fieldset',
       '#title' => t("Parent's Marital Status"),
       '#attributes' => [
         'class' => 'maritalStatus',
       ],
     ];
-    $form['familyHistory']['maritalStatus']['single'] = [
+    $form['family_history']['maritalStatus']['single'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Single, never married'),
     ];
-    $form['familyHistory']['maritalStatus']['engaged'] = [
+    $form['family_history']['maritalStatus']['engaged'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Engaged'),
     ];
-    $form['familyHistory']['maritalStatus']['married'] = [
+    $form['family_history']['maritalStatus']['married'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Married'),
     ];
-    $form['familyHistory']['maritalStatus']['divorced'] = [
+    $form['family_history']['maritalStatus']['divorced'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Divorced'),
     ];
-    $form['familyHistory']['maritalStatus']['seperated'] = [
+    $form['family_history']['maritalStatus']['seperated'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Seperated'),
     ];
-    $form['familyHistory']['maritalStatus']['divorceprocess'] = [
+    $form['family_history']['maritalStatus']['divorceprocess'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Divorce in process'),
     ];
-    $form['familyHistory']['maritalStatus']['livein'] = [
+    $form['family_history']['maritalStatus']['livein'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Live-in'),
     ];
-    $form['familyHistory']['maritalStatus']['selfmarriages'] = [
+    $form['family_history']['maritalStatus']['selfmarriages'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('prior marriages (self)'),
     ];
-    $form['familyHistory']['maritalStatus']['partnermarriages'] = [
+    $form['family_history']['maritalStatus']['partnermarriages'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('prior marriages (partner)'),
     ];
@@ -257,18 +257,18 @@ class FamilyHistory extends FormBase {
     //
     // General Questions Text Area
     //
-    $form['familyHistory']['textarea'] = [
+    $form['family_history']['textarea'] = [
       '#type' => 'fieldset',
     ];
-    $form['familyHistory']['textarea']['text'] = [
+    $form['family_history']['textarea']['text'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['family_relations']['family_relationships_textarea'] = [
+    $form['family_history']['family_relations']['family_relationships_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
     ];
-    $form['familyHistory']['stressors']['checkboxes'] = [
+    $form['family_history']['stressors']['checkboxes'] = [
       '#type' => 'checkboxes',
       '#title' => $this
         ->t('Stressors:'),
@@ -283,10 +283,10 @@ class FamilyHistory extends FormBase {
         'other' => $this->t('Other'),
       ],
     ];
-    $form['familyHistory']['stressors']['stressors_textarea'] = [
+    $form['family_history']['stressors']['stressors_textarea'] = [
       '#type' => 'textarea',
     ];
-    $form['familyHistory']['mental_substance']['mental_textarea'] = [
+    $form['family_history']['mental_substance']['mental_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Family history of Mental Health Issues/Substance Abuse/Other::'),
