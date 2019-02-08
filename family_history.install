@@ -11,7 +11,7 @@
 
 function family_history_schema() {
   $schema['family_history'] = [
-   'description' => 'Basic test table for the database unit tests.',
+   'description' => 'Table for Family History Form',
    'fields' => [
      'id' => [
        'type' => 'serial',
@@ -207,18 +207,16 @@ function family_history_schema() {
        'default' => 0,
      ],
      // Text Area Questions
-     'general_text' => [
-       'type' => 'varchar_ascii',
-       'length' => 100,
+     'general_textarea' => [
+       'type' => 'text',
+       'length' => 255,
        'not null' => TRUE,
-       'default' => '',
      ],
      //Family History Specifics
-     'family_relationships_text' => [
-       'type' => 'varchar_ascii',
-       'length' => 30,
+     'family_relationships_textarea' => [
+       'type' => 'text',
+       'length' => 255,
        'not null' => TRUE,
-       'default' => '',
      ],
      'family_stressors_none' => [
        'description' => 'family_stressors_none',
@@ -277,16 +275,14 @@ function family_history_schema() {
        'default' => 0,
      ],
      'stressors_textarea' => [
-       'type' => 'varchar_ascii',
-       'length' => 30,
+       'type' => 'text',
+       'length' => 255,
        'not null' => TRUE,
-       'default' => '',
      ],
      'mental_textarea' => [
-       'type' => 'varchar_ascii',
-       'length' => 30,
+       'type' => 'text',
+       'length' => 255,
        'not null' => TRUE,
-       'default' => '',
      ],
    ],
    'primary key' => [
