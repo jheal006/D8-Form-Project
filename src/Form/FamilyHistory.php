@@ -238,7 +238,7 @@ class FamilyHistory extends FormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Seperated'),
     ];
-    $form['family_history']['maritalStatus']['divorceprocess'] = [
+    $form['family_history']['maritalStatus']['divorce_process'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Divorce in process'),
     ];
@@ -261,7 +261,7 @@ class FamilyHistory extends FormBase {
     $form['family_history']['textarea'] = [
       '#type' => 'fieldset',
     ];
-    $form['family_history']['textarea']['text'] = [
+    $form['family_history']['textarea']['general_textarea'] = [
       '#type' => 'textarea',
     ];
     $form['family_history']['family_relations']['family_relationships_textarea'] = [
@@ -274,15 +274,16 @@ class FamilyHistory extends FormBase {
       '#title' => $this
         ->t('Stressors:'),
       '#options' => [
-        'None' => $this->t('None reported'),
+        'none' => $this->t('None reported'),
         'abuse' => $this->t('Abuse'),
         'illness' => $this->t('Illness'),
         'death' => $this->t('Death'),
         'move' => $this->t('Move'),
-        'separation' => $this->t('Separation or divorce'),
+        'divorce' => $this->t('Separation or divorce'),
         'military' => $this->t('Military Deployment'),
         'other' => $this->t('Other'),
       ],
+
     ];
     $form['family_history']['stressors']['stressors_textarea'] = [
       '#type' => 'textarea',
@@ -300,7 +301,6 @@ class FamilyHistory extends FormBase {
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',
     );
-
     return $form;
   }
 
@@ -360,9 +360,27 @@ class FamilyHistory extends FormBase {
       'sons_list' => $form_state->getValue('sons_list'),
       'number_of_daughters' => $form_state->getValue('daughters_number'),
       'daughters_list' => $form_state->getValue('daughters_list'),
-
-
-
+      'single' => $form_state->getValue('single'),
+      'engaged' => $form_state->getValue('engaged'),
+      'married' => $form_state->getValue('married'),
+      'divorced' => $form_state->getValue('divorced'),
+      'seperated' => $form_state->getValue('seperated'),
+      'divorceprocess' => $form_state->getValue('divorce_process'),
+      'livein' => $form_state->getValue('livein'),
+      'selfmarriages' => $form_state->getValue('selfmarriages'),
+      'partnermarriages' => $form_state->getValue('partnermarriages'),
+      'general_textarea' => $form_state->getValue('general_textarea'),
+      'mental_textarea' => $form_state->getValue('mental_textarea'),
+      'family_stressors_none' => $form_state->getValue(['checkboxes','none']) ? 1 : 0,
+      'family_stressors_abuse' => $form_state->getValue(['checkboxes','abuse']) ? 1 : 0,
+      'family_stressors_illness' => $form_state->getValue(['checkboxes','illness']) ? 1 : 0,
+      'family_stressors_death' => $form_state->getValue(['checkboxes','death']) ? 1 : 0,
+      'family_stressors_move' => $form_state->getValue(['checkboxes','move']) ? 1 : 0,
+      'family_stressors_divorce' => $form_state->getValue(['checkboxes','divorce']) ? 1 : 0,
+      'family_stressors_military' => $form_state->getValue(['checkboxes','military']) ? 1 : 0,
+      'family_stressors_other' => $form_state->getValue(['checkboxes','other']) ? 1 : 0,
+      'family_relationships_textarea' => $form_state->getValue('family_relationships_textarea'),
+      'stressors_textarea' => $form_state->getValue('stressors_textarea'),
     ))
     ->execute();
     dsm($dk);
