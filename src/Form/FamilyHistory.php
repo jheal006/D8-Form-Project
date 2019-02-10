@@ -1,5 +1,6 @@
 <?php
 
+//THIS IS THE FILEPATH FROM THE CUSTOM DIR!!!!
 namespace Drupal\family_history\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -313,6 +314,22 @@ class FamilyHistory extends FormBase {
     } else if (intval($form_state->getValue('brothers_number') < 0)) {
         $form_state->setErrorByName('brothers_number', $this->t('Please provide a positive integer'));
     }
+    if (!is_numeric($form_state->getValue('sisters_number'))) {
+        $form_state->setErrorByName('sisters_number', $this->t('Please enter a number'));
+    } else if (intval($form_state->getValue('sisters_number') < 0)) {
+        $form_state->setErrorByName('sisters_number', $this->t('Please provide a positive integer'));
+    }
+    if (!is_numeric($form_state->getValue('sons_number'))) {
+        $form_state->setErrorByName('sons_number', $this->t('Please enter a number'));
+    } else if (intval($form_state->getValue('sons_number') < 0)) {
+        $form_state->setErrorByName('sons_number', $this->t('Please provide a positive integer'));
+    }
+    if (!is_numeric($form_state->getValue('daughters_number'))) {
+        $form_state->setErrorByName('daughters_number', $this->t('Please enter a number'));
+    } else if (intval($form_state->getValue('daughters_number') < 0)) {
+        $form_state->setErrorByName('daughters_number', $this->t('Please provide a positive integer'));
+    }
+
   }
 
 
@@ -338,6 +355,12 @@ class FamilyHistory extends FormBase {
       'brothers_list' => $form_state->getValue('brothers_list'),
       'number_of_sisters' => $form_state->getValue('sisters_number'),
       'sisters_list' => $form_state->getValue('sisters_list'),
+      'children' => $form_state->getValue('children_none'),
+      'number_of_sons' => $form_state->getValue('sons_number'),
+      'sons_list' => $form_state->getValue('sons_list'),
+      'number_of_daughters' => $form_state->getValue('daughters_number'),
+      'daughters_list' => $form_state->getValue('daughters_list'),
+
 
 
     ))
