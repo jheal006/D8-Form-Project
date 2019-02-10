@@ -211,12 +211,14 @@ function family_history_schema() {
        'type' => 'text',
        'length' => 255,
        'not null' => TRUE,
+       'size' => normal,
      ],
      //Family History Specifics
      'family_relationships_textarea' => [
        'type' => 'text',
        'length' => 255,
        'not null' => TRUE,
+       'size' => normal,
      ],
      'family_stressors_none' => [
        'description' => 'family_stressors_none',
@@ -278,11 +280,13 @@ function family_history_schema() {
        'type' => 'text',
        'length' => 255,
        'not null' => TRUE,
+       'size' => normal,
      ],
      'mental_textarea' => [
        'type' => 'text',
        'length' => 255,
        'not null' => TRUE,
+       'size' => normal,
      ],
    ],
    'primary key' => [
