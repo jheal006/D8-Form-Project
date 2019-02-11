@@ -1,7 +1,15 @@
-family_history:
-  path: /family/history
+family_history.entry_list:
+  path: '/family/history/entries'
   defaults:
+    _title: 'List of Fam History Forms'
+    _controller: 'Drupal\family_history\Controller\FamilyHistoryController::entryList'
+  requirements:
+    _permission: 'access content'
+
+family_history.add:
+  path: /family/history/form
+  defaults:
+    _title: 'Family History Form'
     _form: Drupal\family_history\Form\FamilyHistory
-    _title: 'Family History'
   requirements:
     _permission: 'access content'
