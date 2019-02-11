@@ -5,14 +5,8 @@ namespace Drupal\family_history\Controller;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Controller\ControllerBase;
 
-/**
- * Controller for DBTNG Example.
- *
- * @ingroup dbtng_example
- */
-class FamilyHistoryController extends ControllerBase {
 
-  // you can write your own query to fetch the data I have given my example.
+class FamilyHistoryController extends ControllerBase {
 
   /**
    * entryList.
