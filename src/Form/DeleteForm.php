@@ -10,7 +10,7 @@ use Drupal\Core\Render\Element;
 /**
  * Class DeleteForm.
  *
- * @package Drupal\mydata\Form
+ * @package Drupal\family_history\Form
  */
  class DeleteForm extends ConfirmFormBase {
  /**
@@ -61,8 +61,8 @@ use Drupal\Core\Render\Element;
         $query = \Drupal::database();
         $query->delete('family_history')
                     ->condition('id',$this->id)
-                   ->execute();
+                    ->execute();
               drupal_set_message("succesfully deleted");
-             $form_state->setRedirect('family_history.entry_list');
+              $form_state->setRedirect('family_history.entry_list');
    }
  }
