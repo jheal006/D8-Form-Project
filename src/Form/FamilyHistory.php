@@ -329,7 +329,6 @@ class FamilyHistory extends FormBase {
     } else if (intval($form_state->getValue('daughters_number') < 0)) {
         $form_state->setErrorByName('daughters_number', $this->t('Please provide a positive integer'));
     }
-
   }
 
 
