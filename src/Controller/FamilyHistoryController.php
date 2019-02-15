@@ -29,13 +29,12 @@ class FamilyHistoryController extends ControllerBase {
             'absolute' =>
               TRUE
         ]);
-        $delete_link = Link::createFromRoute($this->t('Delete'), 'family_history.add',['id'=>$content->id], [
+        $delete_link = Link::createFromRoute($this->t('Delete'), 'family_history.delete',['id'=>$content->id], [
             'absolute' =>
               TRUE
         ]);
         $build_link_action = [
               'action_edit' => [
-              'title' => 'Edit1',
               '#type' => 'html_tag',
               '#value' => $edit_link->toString(),
               '#tag' => 'div',
@@ -45,7 +44,7 @@ class FamilyHistoryController extends ControllerBase {
                '#type' => 'html_tag',
                '#value' => $delete_link->toString(),
                '#tag' => 'div',
-               '#attributes'=>['class'=>['action-edit']]
+               '#attributes'=>['class'=>['action-delete']]
                ]
              ];
         $rows[] = array(
@@ -68,7 +67,6 @@ class FamilyHistoryController extends ControllerBase {
         '#header' => $header,
         '#rows' => $rows,
       );
-      var_dump($rows);
       return $output;
     }
 
