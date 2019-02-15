@@ -7,9 +7,17 @@ family_history.entry_list:
     _permission: 'access content'
 
 family_history.add:
-  path: /family/history/form
+  path: '/family/history/form'
   defaults:
     _title: 'Family History Form'
-    _form: Drupal\family_history\Form\FamilyHistory
+    _form: 'Drupal\family_history\Form\FamilyHistory'
+  requirements:
+    _permission: 'access content'
+
+family_history.delete:
+  path: '/family/history/form/delete/{id}'
+  defaults:
+    _title: 'Delete Family History Form'
+    _form: 'Drupal\family_history\Form\DeleteForm'
   requirements:
     _permission: 'access content'
