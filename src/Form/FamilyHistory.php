@@ -66,7 +66,7 @@ class FamilyHistory extends FormBase {
           ->t('Father'),
         'Mother' => $this
           ->t('Mother'),
-          '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1']:'Father',
+          '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1']: 'Father',
       ],
     ];
     $form['family_history']['family_comp']['parents']['parent_2'] = [
@@ -77,7 +77,7 @@ class FamilyHistory extends FormBase {
         'Mother' => $this
           ->t('Mother'),
       ],
-      '#default_value' => (isset($record['parent_2']) && $_GET['id']) ? $record['parent_2']:'Mother',
+      '#default_value' => (isset($record['parent_2']) && $_GET['id']) ? $record['parent_2']: 'Mother',
     ];
 
     // Family Comp - Parent(s) Name.
@@ -106,10 +106,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['occupation']['parent_1_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1_occupation']: '',
     ];
     $form['family_history']['family_comp']['parents']['occupation']['parent_2_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_2']) && $_GET['id']) ? $record['parent_2_occupation']: '',
     ];
 
     // Family Comp - Parent(s) Education.
@@ -121,10 +123,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['education']['parent_1_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_1_education']) && $_GET['id']) ? $record['parent_1_education']: '',
     ];
     $form['family_history']['family_comp']['parents']['education']['parent_2_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_2_education']) && $_GET['id']) ? $record['parent_2_education']: '',
     ];
 
     // Family Comp - Parent(s) General Health.
@@ -136,10 +140,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['health']['parent_1_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_1_health']) && $_GET['id']) ? $record['parent_1_health']: '',
     ];
     $form['family_history']['family_comp']['parents']['health']['parent_2_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
+      '#default_value' => (isset($record['parent_2_health']) && $_GET['id']) ? $record['parent_2_health']: '',
     ];
 
     // Family Comp - Sibling(s)
@@ -152,6 +158,7 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['siblings']['siblings_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
+      '#default_value' => (isset($record['siblings_none']) && $_GET['id']) ? $record['siblings_none']: 0,
     ];
 
     // Family Comp - Sibling(s) Names & Ages.
@@ -165,20 +172,24 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of brothers: '),
+      '#default_value' => (isset($record['brothers_number']) && $_GET['id']) ? $record['brothers_number']: 0,
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
+      '#default_value' => (isset($record['brother_list']) && $_GET['id']) ? $record['brother_list']: '',
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sisters: '),
+      '#default_value' => (isset($record['sisters_number']) && $_GET['id']) ? $record['sisters_number']: 0,
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
+      '#default_value' => (isset($record['sisters_list']) && $_GET['id']) ? $record['sisters_list']: '',
     ];
 
     // Family Comp - Children.
@@ -276,11 +287,13 @@ class FamilyHistory extends FormBase {
     ];
     $form['family_history']['textarea']['general_textarea'] = [
       '#type' => 'textarea',
+      '#default_value' => '',
     ];
     $form['family_history']['family_relations']['family_relationships_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
+      '#default_value' => '',
     ];
     $form['family_history']['stressors']['checkboxes'] = [
       '#type' => 'checkboxes',
@@ -351,105 +364,67 @@ class FamilyHistory extends FormBase {
 
    public function submitForm(array &$form, FormStateInterface $form_state) {
 
+    $retrieve = $form_state->getValue();
+
+    $fields = array(
+        'parent_1' => $retrieve['parent_1'],
+        'parent_2' => $retrieve['parent_2'],
+        'parent_1_name' => $retrieve['parent_1_name'],
+        'parent_2_name' => $retrieve['parent_2_name'],
+        'parent_1_occupation' => $retrieve['parent_1_occupation'],
+        'parent_2_occupation' => $retrieve['parent_2_occupation'],
+        'parent_1_education' => $retrieve['parent_1_education'],
+        'parent_2_education' => $retrieve['parent_2_education'],
+        'parent_1_health' => $retrieve['parent_1_health'],
+        'parent_2_health' => $retrieve['parent_2_health'],
+        'siblings' => $retrieve['siblings_none'],
+        'number_of_brothers' => $retrieve['brothers_number'],
+        'brothers_list' => $retrieve['brothers_list'],
+        'number_of_sisters' => $retrieve['sisters_number'],
+        'sisters_list' => $retrieve['sisters_list'],
+        'children' => $retrieve['children_none'],
+        'number_of_sons' => $retrieve['sons_number'],
+        'sons_list' => $retrieve['sons_list'],
+        'number_of_daughters' => $retrieve['daughters_number'],
+        'daughters_list' => $retrieve['daughters_list'],
+        'single' => $retrieve['single'],
+        'engaged' => $retrieve['engaged'],
+        'married' => $retrieve['married'],
+        'divorced' => $retrieve['divorced'],
+        'seperated' => $retrieve['seperated'],
+        'divorceprocess' => $retrieve['divorce_process'],
+        'livein' => $retrieve['livein'],
+        'selfmarriages' => $retrieve['selfmarriages'],
+        'partnermarriages' => $retrieve['partnermarriages'],
+        'general_textarea' => $retrieve['general_textarea'],
+        'mental_textarea' =>  $retrieve['mental_textarea'],
+        'family_stressors_none' => $retrieve[['checkboxes','none']] ? 1 : 0,
+        'family_stressors_abuse' => $retrieve[['checkboxes','abuse']] ? 1 : 0,
+        'family_stressors_illness' => $retrieve[['checkboxes','illness']] ? 1 : 0,
+        'family_stressors_death' => $retrieve[['checkboxes','death']] ? 1 : 0,
+        'family_stressors_move' => $retrieve[['checkboxes','move']] ? 1 : 0,
+        'family_stressors_divorce' => $retrieve[['checkboxes','divorce']] ? 1 : 0,
+        'family_stressors_military' => $retrieve[['checkboxes','military']] ? 1 : 0,
+        'family_stressors_other' => $retrieve[['checkboxes','other']] ? 1 : 0,
+        'family_relationships_textarea' => $retrieve['family_relationships_textarea'],
+        'stressors_textarea' => $retrieve['stressors_textarea'],
+      );
+
+    $query = \Drupal::database();
+    $get = \Drupal::request()->query->get('id');
     if (isset($_GET['id'])) {
-      $dk = db_update('family_history')
-      ->fields(array(
-        'parent_1' => $form_state->getValue('parent_1'),
-        'parent_2' => $form_state->getValue('parent_2'),
-        'parent_1_name' => $form_state->getValue('parent_1_name'),
-        'parent_2_name' => $form_state->getValue('parent_2_name'),
-        'parent_1_occupation' => $form_state->getValue('parent_1_occupation'),
-        'parent_2_occupation' => $form_state->getValue('parent_2_occupation'),
-        'parent_1_education' => $form_state->getValue('parent_1_education'),
-        'parent_2_education' => $form_state->getValue('parent_2_education'),
-        'parent_1_health' => $form_state->getValue('parent_1_health'),
-        'parent_2_health' => $form_state->getValue('parent_2_health'),
-        'siblings' => $form_state->getValue('siblings_none'),
-        'number_of_brothers' => $form_state->getValue('brothers_number'),
-        'brothers_list' => $form_state->getValue('brothers_list'),
-        'number_of_sisters' => $form_state->getValue('sisters_number'),
-        'sisters_list' => $form_state->getValue('sisters_list'),
-        'children' => $form_state->getValue('children_none'),
-        'number_of_sons' => $form_state->getValue('sons_number'),
-        'sons_list' => $form_state->getValue('sons_list'),
-        'number_of_daughters' => $form_state->getValue('daughters_number'),
-        'daughters_list' => $form_state->getValue('daughters_list'),
-        'single' => $form_state->getValue('single'),
-        'engaged' => $form_state->getValue('engaged'),
-        'married' => $form_state->getValue('married'),
-        'divorced' => $form_state->getValue('divorced'),
-        'seperated' => $form_state->getValue('seperated'),
-        'divorceprocess' => $form_state->getValue('divorce_process'),
-        'livein' => $form_state->getValue('livein'),
-        'selfmarriages' => $form_state->getValue('selfmarriages'),
-        'partnermarriages' => $form_state->getValue('partnermarriages'),
-        'general_textarea' => $form_state->getValue('general_textarea'),
-        'mental_textarea' => $form_state->getValue('mental_textarea'),
-        'family_stressors_none' => $form_state->getValue(['checkboxes','none']) ? 1 : 0,
-        'family_stressors_abuse' => $form_state->getValue(['checkboxes','abuse']) ? 1 : 0,
-        'family_stressors_illness' => $form_state->getValue(['checkboxes','illness']) ? 1 : 0,
-        'family_stressors_death' => $form_state->getValue(['checkboxes','death']) ? 1 : 0,
-        'family_stressors_move' => $form_state->getValue(['checkboxes','move']) ? 1 : 0,
-        'family_stressors_divorce' => $form_state->getValue(['checkboxes','divorce']) ? 1 : 0,
-        'family_stressors_military' => $form_state->getValue(['checkboxes','military']) ? 1 : 0,
-        'family_stressors_other' => $form_state->getValue(['checkboxes','other']) ? 1 : 0,
-        'family_relationships_textarea' => $form_state->getValue('family_relationships_textarea'),
-        'stressors_textarea' => $form_state->getValue('stressors_textarea'),
-      ))
-      ->condition('id', $_GET['id'])
-      ->execute();
-      drupal_set_message("Succesfully Updated");
-             $form_state->setRedirect('family_history.entry_list');
-
+      $query->update('family_history')
+          ->fields($fields)
+          ->condition('id', $get)
+          ->execute();
+          drupal_set_message("Succesfully Updated");
+                 $form_state->setRedirect('family_history.entry_list');
     } else {
-      $dk = db_insert('family_history')
-      ->fields(array(
-        'parent_1' => $form_state->getValue('parent_1'),
-        'parent_2' => $form_state->getValue('parent_2'),
-        'parent_1_name' => $form_state->getValue('parent_1_name'),
-        'parent_2_name' => $form_state->getValue('parent_2_name'),
-        'parent_1_occupation' => $form_state->getValue('parent_1_occupation'),
-        'parent_2_occupation' => $form_state->getValue('parent_2_occupation'),
-        'parent_1_education' => $form_state->getValue('parent_1_education'),
-        'parent_2_education' => $form_state->getValue('parent_2_education'),
-        'parent_1_health' => $form_state->getValue('parent_1_health'),
-        'parent_2_health' => $form_state->getValue('parent_2_health'),
-        'siblings' => $form_state->getValue('siblings_none'),
-        'number_of_brothers' => $form_state->getValue('brothers_number'),
-        'brothers_list' => $form_state->getValue('brothers_list'),
-        'number_of_sisters' => $form_state->getValue('sisters_number'),
-        'sisters_list' => $form_state->getValue('sisters_list'),
-        'children' => $form_state->getValue('children_none'),
-        'number_of_sons' => $form_state->getValue('sons_number'),
-        'sons_list' => $form_state->getValue('sons_list'),
-        'number_of_daughters' => $form_state->getValue('daughters_number'),
-        'daughters_list' => $form_state->getValue('daughters_list'),
-        'single' => $form_state->getValue('single'),
-        'engaged' => $form_state->getValue('engaged'),
-        'married' => $form_state->getValue('married'),
-        'divorced' => $form_state->getValue('divorced'),
-        'seperated' => $form_state->getValue('seperated'),
-        'divorceprocess' => $form_state->getValue('divorce_process'),
-        'livein' => $form_state->getValue('livein'),
-        'selfmarriages' => $form_state->getValue('selfmarriages'),
-        'partnermarriages' => $form_state->getValue('partnermarriages'),
-        'general_textarea' => $form_state->getValue('general_textarea'),
-        'mental_textarea' => $form_state->getValue('mental_textarea'),
-        'family_stressors_none' => $form_state->getValue(['checkboxes','none']) ? 1 : 0,
-        'family_stressors_abuse' => $form_state->getValue(['checkboxes','abuse']) ? 1 : 0,
-        'family_stressors_illness' => $form_state->getValue(['checkboxes','illness']) ? 1 : 0,
-        'family_stressors_death' => $form_state->getValue(['checkboxes','death']) ? 1 : 0,
-        'family_stressors_move' => $form_state->getValue(['checkboxes','move']) ? 1 : 0,
-        'family_stressors_divorce' => $form_state->getValue(['checkboxes','divorce']) ? 1 : 0,
-        'family_stressors_military' => $form_state->getValue(['checkboxes','military']) ? 1 : 0,
-        'family_stressors_other' => $form_state->getValue(['checkboxes','other']) ? 1 : 0,
-        'family_relationships_textarea' => $form_state->getValue('family_relationships_textarea'),
-        'stressors_textarea' => $form_state->getValue('stressors_textarea'),
-      ))
-      ->execute();
-      drupal_set_message("Succesfully Saved");
-             $form_state->setRedirect('family_history.entry_list');
-    }
+      $query->insert('family_history')
+          ->fields($fields)
+          ->execute();
+          drupal_set_message("Succesfully Saved");
+                 $form_state->setRedirect('family_history.entry_list');
+    };
   }
-
 }
