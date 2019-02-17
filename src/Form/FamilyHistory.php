@@ -66,8 +66,8 @@ class FamilyHistory extends FormBase {
           ->t('Father'),
         'Mother' => $this
           ->t('Mother'),
+        ],
           '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1']: 'Father',
-      ],
     ];
     $form['family_history']['family_comp']['parents']['parent_2'] = [
       '#type' => 'select',
