@@ -347,7 +347,6 @@ class FamilyHistory extends FormBase {
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',
     );
-    var_dump("WTF IS GOING ON HERE????", "ARRAY KEY EXISTS", array_key_exists('parent_1_name', $record), "ISSET", isset($record['parent_1_name']), $record);
     return $form;
   }
 
