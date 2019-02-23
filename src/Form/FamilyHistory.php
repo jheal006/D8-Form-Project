@@ -25,12 +25,15 @@ class FamilyHistory extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $connection = Database::getConnection();
-
-    if (isset($_GET['id'])) {
+    $id =  \Drupal::request()->query->get('id');
+    if (isset($id)) {
       $query = $connection->select('family_history', 'n')
-        ->condition('id', $_GET['id'])
+        ->condition('id', $id)
         ->fields('n');
       $record = $query->execute()->fetchAssoc();
+    }
+    function key($key) {
+       array_key_exists(key, $record);
     }
 
     $form['#attached']['library'][] = 'family_history/family_history';
@@ -67,7 +70,7 @@ class FamilyHistory extends FormBase {
         'Mother' => $this
           ->t('Mother'),
         ],
-          '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1']: 'Father',
+          '#default_value' => (array_key_exists('parent_1', $record)) ? $record['parent_1']: 'Father',
     ];
     $form['family_history']['family_comp']['parents']['parent_2'] = [
       '#type' => 'select',
@@ -77,7 +80,7 @@ class FamilyHistory extends FormBase {
         'Mother' => $this
           ->t('Mother'),
       ],
-        '#default_value' => (isset($record['parent_2']) && $_GET['id']) ? $record['parent_2']: 'Mother',
+          '#default_value' => (array_key_exists('parent_2', $record)) ? $record['parent_2']: 'Mother',
     ];
 
     // Family Comp - Parent(s) Name.
@@ -89,12 +92,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['name']['parent_1_name'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_1_name']) && $_GET['id']) ? $record['parent_1_name']:'',
+      '#default_value' => (array_key_exists('parent_1_name', $record)) ? $record['parent_1_name'] : '',
     ];
     $form['family_history']['family_comp']['parents']['name']['parent_2_name'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_2_name']) && $_GET['id']) ? $record['parent_2_name']:'',
+      '#default_value' => (array_key_exists('parent_2_name', $record)) ? $record['parent_2_name'] : '',
     ];
 
     // Family Comp - Parent(s) Occupation.
@@ -106,12 +109,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['occupation']['parent_1_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_1']) && $_GET['id']) ? $record['parent_1_occupation']: '',
+      '#default_value' => (array_key_exists('parent_1', $record)) ? $record['parent_1_occupation']: '',
     ];
     $form['family_history']['family_comp']['parents']['occupation']['parent_2_occupation'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_2']) && $_GET['id']) ? $record['parent_2_occupation']: '',
+      '#default_value' => (array_key_exists('parent_2', $record)) ? $record['parent_2_occupation']: '',
     ];
 
     // Family Comp - Parent(s) Education.
@@ -123,12 +126,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['education']['parent_1_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_1_education']) && $_GET['id']) ? $record['parent_1_education']: '',
+      '#default_value' => (array_key_exists('parent_1_education', $record)) ? $record['parent_1_education']: '',
     ];
     $form['family_history']['family_comp']['parents']['education']['parent_2_education'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_2_education']) && $_GET['id']) ? $record['parent_2_education']: '',
+      '#default_value' => (array_key_exists('parent_2_education', $record)) ? $record['parent_2_education']: '',
     ];
 
     // Family Comp - Parent(s) General Health.
@@ -140,12 +143,12 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['parents']['health']['parent_1_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_1_health']) && $_GET['id']) ? $record['parent_1_health']: '',
+      '#default_value' => (array_key_exists('parent_1_health', $record)) ? $record['parent_1_health']: '',
     ];
     $form['family_history']['family_comp']['parents']['health']['parent_2_health'] = [
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#default_value' => (isset($record['parent_2_health']) && $_GET['id']) ? $record['parent_2_health']: '',
+      '#default_value' => (array_key_exists('parent_2_health', $record)) ? $record['parent_2_health']: '',
     ];
 
     // Family Comp - Sibling(s)
@@ -158,7 +161,7 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['siblings']['siblings_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
-      '#default_value' => (isset($record['siblings_none']) && $_GET['id']) ? $record['siblings_none']: 0,
+      '#default_value' => (array_key_exists('siblings_none', $record)) ? $record['siblings_none']: 0,
     ];
 
     // Family Comp - Sibling(s) Names & Ages.
@@ -172,24 +175,24 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of brothers: '),
-      '#default_value' => (isset($record['brothers_number']) && $_GET['id']) ? $record['brothers_number']: 0,
+      '#default_value' => (array_key_exists('brothers_number', $record)) ? $record['brothers_number']: 0,
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['brothers']['brothers_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
-      '#default_value' => (isset($record['brother_list']) && $_GET['id']) ? $record['brother_list']: '',
+      '#default_value' => (array_key_exists('brother_list', $record)) ? $record['brother_list']: '',
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sisters: '),
-      '#default_value' => (isset($record['sisters_number']) && $_GET['id']) ? $record['sisters_number']: 0,
+      '#default_value' => (array_key_exists('sisters_number', $record)) ? $record['sisters_number']: 0,
     ];
     $form['family_history']['family_comp']['siblings']['names_ages']['sisters']['sisters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
-      '#default_value' => (isset($record['sisters_list']) && $_GET['id']) ? $record['sisters_list']: '',
+      '#default_value' => (array_key_exists('sisters_list', $record)) ? $record['sisters_list']: '',
     ];
 
     // Family Comp - Children.
@@ -202,7 +205,7 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['children']['children_none'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('None'),
-      '#default_value' => (isset($record['children_none']) && $_GET['id']) ? $record['children_none']: 0,
+      '#default_value' => (array_key_exists('children_none', $record)) ? $record['children_none']: 0,
     ];
     // Family Comp - Children Names & Ages.
     $form['family_history']['family_comp']['children']['names_ages'] = [
@@ -217,24 +220,24 @@ class FamilyHistory extends FormBase {
     $form['family_history']['family_comp']['children']['names_ages']['sons']['sons_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of sons: '),
-      '#default_value' => (isset($record['sons_number']) && $_GET['id']) ? $record['sons_number']:0,
+      '#default_value' => (array_key_exists('sons_number', $record)) ? $record['sons_number']:0,
     ];
     $form['family_history']['family_comp']['children']['names_ages']['sons']['sons_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
-      '#default_value' => (isset($record['sons_list']) && $_GET['id']) ? $record['sons_list']:'',
+      '#default_value' => (array_key_exists('sons_list', $record)) ? $record['sons_list']:'',
     ];
     $form['family_history']['family_comp']['children']['names_ages']['daughters']['daughters_number'] = [
       '#type' => 'textfield',
       '#title' => t('# of daughters: '),
-      '#default_value' => (isset($record['daughters_number']) && $_GET['id']) ? $record['daughters_number']:0,
+      '#default_value' => (array_key_exists('daughters_number', $record)) ? $record['daughters_number']:0,
     ];
     $form['family_history']['family_comp']['children']['names_ages']['daughters']['daughters_list'] = [
       '#type' => 'textfield',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
-      '#default_value' => (isset($record['daughters_list']) && $_GET['id']) ? $record['daughters_list']:'',
+      '#default_value' => (array_key_exists('daughters_list', $record)) ? $record['daughters_list']:'',
     ];
 
     //
@@ -250,47 +253,47 @@ class FamilyHistory extends FormBase {
     $form['family_history']['maritalStatus']['single'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Single, never married'),
-      '#default_value' => (isset($record['single']) && $_GET['id']) ? $record['single']:'',
+      '#default_value' => (array_key_exists('single', $record)) ? $record['single']:'',
     ];
     $form['family_history']['maritalStatus']['engaged'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Engaged'),
-      '#default_value' => (isset($record['engaged']) && $_GET['id']) ? $record['engaged']:'',
+      '#default_value' => (array_key_exists('engaged', $record)) ? $record['engaged']:'',
     ];
     $form['family_history']['maritalStatus']['married'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Married'),
-      '#default_value' => (isset($record['married']) && $_GET['id']) ? $record['married']:'',
+      '#default_value' => (array_key_exists('married', $record)) ? $record['married']:'',
     ];
     $form['family_history']['maritalStatus']['divorced'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Divorced'),
-      '#default_value' => (isset($record['divorced']) && $_GET['id']) ? $record['divorced']:'',
+      '#default_value' => (array_key_exists('divorced', $record)) ? $record['divorced']:'',
     ];
     $form['family_history']['maritalStatus']['seperated'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Seperated'),
-      '#default_value' => (isset($record['seperated']) && $_GET['id']) ? $record['seperated']:'',
+      '#default_value' => (array_key_exists('seperated', $record)) ? $record['seperated']:'',
     ];
     $form['family_history']['maritalStatus']['divorce_process'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Divorce in process'),
-      '#default_value' => (isset($record['divorce_process']) && $_GET['id']) ? $record['divorce_process']:'',
+      '#default_value' => (array_key_exists('divorce_process', $record)) ? $record['divorce_process']:'',
     ];
     $form['family_history']['maritalStatus']['livein'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Live-in'),
-      '#default_value' => (isset($record['livein']) && $_GET['id']) ? $record['livein']:'',
+      '#default_value' => (array_key_exists('livein', $record)) ? $record['livein']:'',
     ];
     $form['family_history']['maritalStatus']['selfmarriages'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('prior marriages (self)'),
-      '#default_value' => (isset($record['selfmarriages']) && $_GET['id']) ? $record['selfmarriages']:'',
+      '#default_value' => (array_key_exists('selfmarriages', $record)) ? $record['selfmarriages']:'',
     ];
     $form['family_history']['maritalStatus']['partnermarriages'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('prior marriages (partner)'),
-      '#default_value' => (isset($record['partnermarriages']) && $_GET['id']) ? $record['partnermarriages']:'',
+      '#default_value' => (array_key_exists('partnermarriages', $record)) ? $record['partnermarriages']:'',
     ];
 
     //
@@ -298,18 +301,18 @@ class FamilyHistory extends FormBase {
     //
     $form['family_history']['textarea'] = [
       '#type' => 'fieldset',
-      '#default_value' => (isset($record['textarea']) && $_GET['id']) ? $record['textarea']:'',
+      '#default_value' => (array_key_exists('textarea', $record)) ? $record['textarea']:'',
     ];
     $form['family_history']['textarea']['general_textarea'] = [
       '#type' => 'textarea',
       '#default_value' => '',
-      '#default_value' => (isset($record['general_textarea']) && $_GET['id']) ? $record['general_textarea']:'',
+      '#default_value' => (array_key_exists('general_textarea', $record)) ? $record['general_textarea']:'',
     ];
     $form['family_history']['family_relations']['family_relationships_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Past or present relationship with family members:'),
-      '#default_value' => (isset($record['family_relationships_textarea']) && $_GET['id']) ? $record['family_relationships_textarea']:'',
+      '#default_value' => (array_key_exists('family_relationships_textarea', $record)) ? $record['family_relationships_textarea']:'',
     ];
     $form['family_history']['stressors']['checkboxes'] = [
       '#type' => 'checkboxes',
@@ -325,17 +328,16 @@ class FamilyHistory extends FormBase {
         'military' => $this->t('Military Deployment'),
         'other' => $this->t('Other'),
       ],
-
     ];
     $form['family_history']['stressors']['stressors_textarea'] = [
       '#type' => 'textarea',
-      '#default_value' => (isset($record['stressors_textarea']) && $_GET['id']) ? $record['stressors_textarea']:'',
+      '#default_value' => (array_key_exists('stressors_textarea', $record)) ? $record['stressors_textarea']:'',
     ];
     $form['family_history']['mental_substance']['mental_textarea'] = [
       '#type' => 'textarea',
       '#title' => $this
         ->t('Family history of Mental Health Issues/Substance Abuse/Other::'),
-        '#default_value' => (isset($record['mental_textarea']) && $_GET['id']) ? $record['mental_textarea']:'',
+        '#default_value' => (array_key_exists('mental_textarea', $record)) ? $record['mental_textarea']:'',
     ];
 
 
@@ -345,6 +347,7 @@ class FamilyHistory extends FormBase {
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',
     );
+    var_dump("WTF IS GOING ON HERE????", "ARRAY KEY EXISTS", array_key_exists('parent_1_name', $record), "ISSET", isset($record['parent_1_name']), $record);
     return $form;
   }
 
@@ -429,11 +432,11 @@ class FamilyHistory extends FormBase {
       );
 
     $query = \Drupal::database();
-    $get = \Drupal::request()->query->get('id');
-    if (isset($_GET['id'])) {
+    $id = \Drupal::request()->query->get('id');
+    if (isset($id)) {
       $query->update('family_history')
           ->fields($fields)
-          ->condition('id', $get)
+          ->condition('id', $id)
           ->execute();
           drupal_set_message("Succesfully Updated");
                  $form_state->setRedirect('family_history.entry_list');
